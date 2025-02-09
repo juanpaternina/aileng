@@ -7,33 +7,49 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       # Configura las herramientas necesarias
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install Fastlane
-        uses: ruby/setup-ruby@v1
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 20 # O la versión que tu proyecto necesita
+
+      # - name: Install Depdencies
+      #   run: npm install
+
+      # - name: Run Tests
+      #   run: npm run test-no-watch
+
+      - uses: actions/setup-java@v3
         with:
-          ruby-version: 3.0.2
-          bundler-cache: true
+          distribution: "adopt"
+          java-version: "11"
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck
+
+      # - name: Install Fastlane
+      #   uses: ruby/setup-ruby@v1
+      #   with:
+      #     ruby-version: 3.0.2
+      #     bundler-cache: true
 
       # Add Fastlane plugins
-      - name: Add Fastlane Plugins
-        run: gem install fastlane
+      # - name: Add Fastlane Plugins
+      #   run: gem install fastlane
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20 # O la versión que tu proyecto necesita
-
-      - name: Install Depdencies
-        run: npm install
-
-      - name: Run Tests
-        run: npm run test-no-watch
-
-      - name: Build Android
-        run: fastlane android build
+      # - name: Build Android
+      #   run: fastlane android build
