@@ -34,6 +34,12 @@ jobs:
       # - name: Setup Android SDK
       #   uses: android-actions/setup-android@v3
 
+      # - name: Build Release APK
+      #   run: ./android/gradlew assembleRelease
+
+      # - name: Install APK
+      #   run: adb install ./android/app/build/outputs/apk/release/app-release.apk
+
       - name: Enable KVM group perms
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -47,4 +53,4 @@ jobs:
           arch: x86_64
           ram-size: 2048M
           target: default
-          script: maestro test --format=junit --output=report.xml --no-ansi .maestro
+          script: ./android/gradlew assembleRelease &&  adb install ./android/app/build/outputs/apk/release/app-release.apk &&  maestro test --format=junit --output=report.xml --no-ansi .maestro
