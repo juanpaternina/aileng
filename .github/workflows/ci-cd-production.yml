@@ -53,20 +53,17 @@ jobs:
       #     sudo udevadm control --reload-rules
       #     sudo udevadm trigger --name-match=kvm
 
-      # - uses: dniHze/maestro-test-action@v1
-      # - uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     api-level: 29
-      #     arch: x86_64
-      #     ram-size: 2048M
-      #     target: default
-      #     script: |
-      #       # Asegúrate de que la aplicación esté instalada en el emulador.
-      #       # Si es necesario, puedes instalarla con:
-      #       # adb install path/to/your/app.apk
+      - uses: dniHze/maestro-test-action@v1
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          arch: x86_64
+          ram-size: 2048M
+          target: default
+          script: |
+            # Asegúrate de que la aplicación esté instalada en el emulador.
+            # Si es necesario, puedes instalarla con:
+            adb install ./android/app/build/outputs/apk/release/app-release.apk
 
-      #       # Inicia la aplicación
-      #       #adb shell am start -n com.tuempresa.tuapp/.MainActivity
-
-      #       # Ejecuta los tests de maestro
-      #       maestro test --format=junit --output=report.xml --no-ansi .maestro
+            # Ejecuta los tests de maestro
+            maestro test --format=junit --output=report.xml --no-ansi .maestro

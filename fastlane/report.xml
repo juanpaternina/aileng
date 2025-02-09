@@ -5,19 +5,32 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.000352">
+      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.00027">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: ensure_git_branch" time="0.025088">
+      <testcase classname="fastlane.lanes" name="1: ensure_git_branch" time="0.014874">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: ensure_git_status_clean" time="0.017811">
+      <testcase classname="fastlane.lanes" name="2: ensure_git_status_clean" time="0.019939">
         
-          <failure message="/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in &apos;Fastlane::Actions.execute_action&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:255:in &apos;block in Fastlane::Runner#execute_action&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:229:in &apos;Dir.chdir&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:229:in &apos;Fastlane::Runner#execute_action&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:157:in &apos;Fastlane::Runner#trigger_action_by_name&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/fast_file.rb:159:in &apos;Fastlane::FastFile#method_missing&apos;&#10;Fastfile:7:in &apos;block in Fastlane::FastFile#parsing_binding&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:292:in &apos;Fastlane::Runner#execute_flow_block&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:46:in &apos;block in Fastlane::Runner#execute&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:45:in &apos;Dir.chdir&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:45:in &apos;Fastlane::Runner#execute&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/lane_manager.rb:46:in &apos;Fastlane::LaneManager.cruise_lane&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/command_line_handler.rb:34:in &apos;Fastlane::CommandLineHandler.handle&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:110:in &apos;block (2 levels) in Fastlane::CommandsGenerator#run&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/commander-4.6.0/lib/commander/command.rb:187:in &apos;Commander::Command#call&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/commander-4.6.0/lib/commander/command.rb:157:in &apos;Commander::Command#run&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/commander-4.6.0/lib/commander/runner.rb:444:in &apos;Commander::Runner#run_active_command&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:124:in &apos;Commander::Runner#run!&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/commander-4.6.0/lib/commander/delegates.rb:18:in &apos;Commander::Delegates#run!&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:363:in &apos;Fastlane::CommandsGenerator#run&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:43:in &apos;Fastlane::CommandsGenerator.start&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/cli_tools_distributor.rb:123:in &apos;Fastlane::CLIToolsDistributor.take_off&apos;&#10;/opt/homebrew/lib/ruby/gems/3.4.0/gems/fastlane-2.226.0/bin/fastlane:23:in &apos;&lt;top (required)&gt;&apos;&#10;/opt/homebrew/lib/ruby/gems/3.3.0/bin/fastlane:25:in &apos;Kernel#load&apos;&#10;/opt/homebrew/lib/ruby/gems/3.3.0/bin/fastlane:25:in &apos;&lt;main&gt;&apos;&#10;&#10;Git repository is dirty! Please ensure the repo is in a clean state by committing/stashing/discarding all changes first.&#10;Uncommitted changes:&#10; M .github/workflows/ci-cd-production.yml&#10;" />
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: git_pull" time="3.717141">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: clean" time="19.839985">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: assembleRelease" time="183.652798">
         
       </testcase>
     
