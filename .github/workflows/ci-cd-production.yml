@@ -44,17 +44,16 @@ jobs:
       - name: Build Android
         run: fastlane android build
 
-      # - name: Install APK
-      #   run: adb install ./android/app/build/outputs/apk/release/app-release.apk
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
 
-      # - name: Enable KVM group perms
-      #   run: |
-      #     echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-      #     sudo udevadm control --reload-rules
-      #     sudo udevadm trigger --name-match=kvm
-
-      - uses: dniHze/maestro-test-action@v1
-      - uses: reactivecircus/android-emulator-runner@v2
+      - name: Download Maestro
+        uses: dniHze/maestro-test-action@v1
+      - name: Run Test with Maestro
+        uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           arch: x86_64
