@@ -5,7 +5,8 @@ before_all do
     branch: 'main'
   )
   ensure_git_status_clean(
-    show_uncommitted_changes: true
+    show_uncommitted_changes: true,
+    ignore_files: ['**/node_modules/**', 'package-lock.json']
   )
   git_pull
 end
