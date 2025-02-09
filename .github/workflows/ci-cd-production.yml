@@ -31,26 +31,42 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
-      # - name: Setup Android SDK
-      #   uses: android-actions/setup-android@v3
+      - name: Install Fastlane
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+          bundler-cache: true
 
-      # - name: Build Release APK
-      #   run: ./android/gradlew assembleRelease
+      #Add Fastlane plugins
+      - name: Add Fastlane Plugins
+        run: gem install fastlane
+
+      - name: Build Android
+        run: fastlane android build
 
       # - name: Install APK
       #   run: adb install ./android/app/build/outputs/apk/release/app-release.apk
 
-      - name: Enable KVM group perms
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
+      # - name: Enable KVM group perms
+      #   run: |
+      #     echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+      #     sudo udevadm control --reload-rules
+      #     sudo udevadm trigger --name-match=kvm
 
-      - uses: dniHze/maestro-test-action@v1
-      - uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          arch: x86_64
-          ram-size: 2048M
-          target: default
-          script: ./android/gradlew assembleRelease &&  adb install ./android/app/build/outputs/apk/release/app-release.apk &&  maestro test --format=junit --output=report.xml --no-ansi .maestro
+      # - uses: dniHze/maestro-test-action@v1
+      # - uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 29
+      #     arch: x86_64
+      #     ram-size: 2048M
+      #     target: default
+      #     script: |
+      #       # Asegúrate de que la aplicación esté instalada en el emulador.
+      #       # Si es necesario, puedes instalarla con:
+      #       # adb install path/to/your/app.apk
+
+      #       # Inicia la aplicación
+      #       #adb shell am start -n com.tuempresa.tuapp/.MainActivity
+
+      #       # Ejecuta los tests de maestro
+      #       maestro test --format=junit --output=report.xml --no-ansi .maestro
