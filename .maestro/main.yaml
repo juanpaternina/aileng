@@ -1,0 +1,6 @@
+# flow.yaml
+
+appId: com.juanpaternina2035.Aileng
+---
+- launchApp
+- tapOn: "Press me"
